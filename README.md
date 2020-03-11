@@ -1,30 +1,4 @@
-Bitcoin Price Prediction
-Bitcoin Price Prediction	1
-Data Preprocessing	2
-1.Remove non-English items & time processing	2
-Process Tweet Post	2
-Process Reddit Post	2
-2.Bitcoin prices percentage	2
-3.Sentiment	3
-Vader	3
-SvelteMoji API	3
-Group By Time	3
-Combine Sentiment	4
-4.Influencer	4
-Find Influencer	4
-Group By Time	4
-Combine Sentiment	5
-Econometrics Model	5
-Split Bucket-6hr	5
-Find optimal lag	6
-Drop records without sentiment information	6
-Models	6
-Testing price + sentiment model with split buckets	6
-Testing price-only model with split buckets and simple trading strategy	7
-LSTM Model	8
-Models	8
-Split Bucket-24hr	8
-
+#Bitcoin Price Prediction
 
 
 
@@ -43,7 +17,13 @@ Output File: processed_reddit_post.csv*
 
 * This is the file after removing nonEnglish rows, running Vadder sentiment, parsing the Integer timestamp to datetime, and round the time to hours.
 2.Bitcoin prices percentage
-InputFileCodeFileOutputFileraw_bitcoin.csvbitcoin_percentage.csvbitcoin_percentage.csv** This file has a new column of the bitcoin prices six hours later, a column of the percentage change between the price now and price six hours later.
+InputFile
+CodeFile
+OutputFile
+raw_bitcoin.csv
+bitcoin_percentage.csv
+bitcoin_percentage.csv*
+* This file has a new column of the bitcoin prices six hours later, a column of the percentage change between the price now and price six hours later.
 InputFile:  
 ?
 OutputFile:  
@@ -52,34 +32,100 @@ We got sentiment values from Vader Sentiment and SvelteMoji API. Further works a
 Vader
 In the first step, Preprocessing_reddit_post.ipynb and Preprocessing_tweets.ipynb already includes the code part for preprocessing. Therefore, processed_tweets.csv and processed_reddit_post.csv already have the vader sentiment tags and scores available.
 SvelteMoji API
-InputFileCodeFileOutputFileTweet_eng.csv
-Svelte_API.ipynbPreprocessing/Post_api_output.zip
-Preprocessing/Tweet_api_output.zipGroup By Time
-InputFileCodeFileOutputFileFolder: post_api_output
-processed_reddit_post.csvpost_hourly.ipynbpost_average_maximum.csv
-InputFileCodeFileOutputFileFolder: tweet_api_output
-tweet_eng.csvtweet_hourly.ipynbtweet_average_maximum.csvCombine Sentiment
-InputFileCodeFileOutputFilePost_average_maximum.csv
-tweet_average_maximum.csvpost_tweet_hourly.ipynbcombined_average_maximum.csv
-InputFileCodeFileOutputFilecombined_average_maximum.csv
-Merge price & influencer.ipynbcombined_average_maximum_null.csv
+InputFile
+CodeFile
+OutputFile
+Tweet_eng.csv
+
+Svelte_API.ipynb
+Preprocessing/Post_api_output.zip
+Preprocessing/Tweet_api_output.zip
+Group By Time
+InputFile
+CodeFile
+OutputFile
+Folder: post_api_output
+processed_reddit_post.csv
+post_hourly.ipynb
+post_average_maximum.csv
+
+InputFile
+CodeFile
+OutputFile
+Folder: tweet_api_output
+tweet_eng.csv
+tweet_hourly.ipynb
+tweet_average_maximum.csv
+Combine Sentiment
+InputFile
+CodeFile
+OutputFile
+Post_average_maximum.csv
+tweet_average_maximum.csv
+post_tweet_hourly.ipynb
+combined_average_maximum.csv
+
+InputFile
+CodeFile
+OutputFile
+combined_average_maximum.csv
+
+Merge price & influencer.ipynb
+combined_average_maximum_null.csv
+
 4.Influencer
 Find Influencer
-InputFileCodeFileOutputFileFolder: Tweet_api_output
-tweet_eng.csvinfluencer_tweet.ipynbinfluential_tweet_user.csv
-InputFileCodeFileOutputFileFolder:
+InputFile
+CodeFile
+OutputFile
+Folder: Tweet_api_output
+tweet_eng.csv
+influencer_tweet.ipynb
+influential_tweet_user.csv
+
+InputFile
+CodeFile
+OutputFile
+Folder:
 post_api_output
-processed_reddit_post.csvinfluencer_reddit_post.ipynbReddit_influencer_and_weight_new.csv + reddit_influencer_with_weighted_sentiment_new.csv
-? influencer_input_bitcoin.csv
+processed_reddit_post.csv
+influencer_reddit_post.ipynb
+Reddit_influencer_and_weight_new.csv + reddit_influencer_with_weighted_sentiment_new.csv
+? influencer_input_bitcoin.csv
+
 Group By Time
-InputFileCodeFileOutputFileFolder: post_api_output
-influcner_input_bitcoin.csvpost_hourlypost_average_maximum_influence.csv
-InputFileCodeFileOutputFileFolder: tweet_api_output
+InputFile
+CodeFile
+OutputFile
+Folder: post_api_output
+influcner_input_bitcoin.csv
+post_hourly
+post_average_maximum_influence.csv
+
+InputFile
+CodeFile
+OutputFile
+Folder: tweet_api_output
 Tweet_eng.csv
-influential_tweet_user.csvtweet_hourly_influencer.ipynbtweet_average_maximum_influence.csvCombine Sentiment
-InputFileCodeFileOutputFilePost_average_maximum_influence.csv
-tweet_average_maximum_influence.csvpost_tweet_hourly.ipynbcombined_average_maximum_influence.csv
-InputFileCodeFileOutputFilecombined_average_maximum_influence.csvMerge price & influencer.ipynbcombined_average_maximum_influence_null.csv
+influential_tweet_user.csv
+tweet_hourly_influencer.ipynb
+tweet_average_maximum_influence.csv
+Combine Sentiment
+InputFile
+CodeFile
+OutputFile
+Post_average_maximum_influence.csv
+tweet_average_maximum_influence.csv
+post_tweet_hourly.ipynb
+combined_average_maximum_influence.csv
+
+InputFile
+CodeFile
+OutputFile
+combined_average_maximum_influence.csv
+Merge price & influencer.ipynb
+combined_average_maximum_influence_null.csv
+
 
 Econometrics Model
 Split Bucket-6hr
